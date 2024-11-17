@@ -1,8 +1,8 @@
 package main
 
 import (
+	"englishTalk/database"
 	"englishTalk/routes"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,6 +15,7 @@ func main() {
 	var age int = 1
 	age = 2
 	println(age)
+	database.ConnectDb()
 	r := gin.Default()
 	apiV1 := r.Group("api/v1")
 	{
