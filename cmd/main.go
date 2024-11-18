@@ -4,6 +4,7 @@ import (
 	"englishTalk/database"
 	"englishTalk/routes"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 type UserRequest struct {
@@ -12,9 +13,9 @@ type UserRequest struct {
 }
 
 func main() {
-	var age int = 1
-	age = 2
-	println(age)
+	if err := godotenv.Load("../.env"); err != nil {
+		println("Error loading .env file: %v", err)
+	}
 	database.ConnectDb()
 	r := gin.Default()
 	apiV1 := r.Group("api/v1")
